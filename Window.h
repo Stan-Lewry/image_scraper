@@ -7,6 +7,12 @@
 #include <qlineedit.h>
 #include <qgroupbox.h>
 #include <qcombobox.h>
+#include <qgraphicsscene.h>
+#include <qgraphicsview.h>
+#include <QGraphicsPixmapItem>
+#include <QListWidgetItem>
+#include <QProgressBar>
+#include <QString>
 #include <qlabel.h>
 #include <qgridlayout.h>
 #include "Request.h"
@@ -28,12 +34,20 @@ class Window : public QWidget{
 
 	private:
 		QPushButton *confirmTextButton;
+		QPushButton *downloadNowButton;
 		QPushButton *m_button2;
 		QPushButton *m_button3;
+
+		QProgressBar *progressBar;
+
+		QListWidget* listWidget;
+
+		QGraphicsPixmapItem item;
 
 		QString pageURL;
 
 		QLineEdit *lineEdit;
+		QLineEdit *folderPath;
 		//HTTP *http;
 		Request *request;
 		std::vector<std::string> linkStore;
