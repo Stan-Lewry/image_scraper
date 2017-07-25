@@ -187,7 +187,10 @@ void Window::getImage(){
 }
 
 void Window::setPageURL(){
-
+	
+	//Empty list widget
+	listWidget->clear();
+	linkStore.clear();	
 	pageURL = lineEdit->text();
 
 	std::cout << pageURL.toStdString();
