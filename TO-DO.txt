@@ -1,12 +1,5 @@
 TO-DO:
 
-Clear the vect and list widget when a new request is made
-
-Browse folder line edit sets path to folder
-
-Download images.
-
-If can find image try inserting the page url in front of the image url
 
 Search into CSS to find more images
 

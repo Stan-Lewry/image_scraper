@@ -5,30 +5,20 @@ Window::Window(QWidget *parent) :
 {
 
 	pageURL = "";
-		//setFixedSize(400, 100);
 
 	confirmTextButton = new QPushButton("Go!", this);
 	downloadNowButton = new QPushButton("Download All", this);
 
 	QGraphicsScene scene;
 	QGraphicsView view(&scene);
-	//item = new QGraphicsPixmapItem(QPixmap("Assets/wizard/.png"));
+
 
 	progressBar = new QProgressBar(this);
 
 	QWidget *pic = new QWidget(this);
 	pic->setStyleSheet("background-image: url(Assets/wizard.png); background-repeat: no-repeat;");
-	//pic->setGeometry(QRect(50, 50, 128, 128));
-
 
 	listWidget = new QListWidget(this);
-
-	// new QListWidgetItem(tr("TEST"), listWidget);
-	// new QListWidgetItem(tr("TEST"), listWidget);
-	// new QListWidgetItem(tr("TEST"), listWidget);
-	// new QListWidgetItem(tr("TEST"), listWidget);
-	// new QListWidgetItem(tr("TEST"), listWidget);
-	// new QListWidgetItem(tr("TEST"), listWidget);
 
 	QGroupBox *echoGroup = new QGroupBox(tr("Echo"));
 	QLabel *echolabel = new QLabel(tr("Mode:"));

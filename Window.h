@@ -13,6 +13,7 @@
 #include <QListWidgetItem>
 #include <QProgressBar>
 #include <QString>
+#include <QFileDialog>
 #include <qlabel.h>
 #include <qgridlayout.h>
 #include "Request.h"
