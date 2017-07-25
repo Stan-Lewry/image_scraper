@@ -50,8 +50,8 @@ Window::Window(QWidget *parent) :
 	echoLayout->addWidget(lineEdit, 1, 0, 1, 2);
 	echoLayout->addWidget(confirmTextButton, 1, 2);
 	echoLayout->addWidget(listWidget, 2, 0, 1, 3);
-	echoLayout->addWidget(folderPath, 3, 0, 1, 2);
-	echoLayout->addWidget(downloadNowButton, 3, 2);
+	//echoLayout->addWidget(folderPath, 3, 0, 1, 2);
+	echoLayout->addWidget(downloadNowButton, 3, 0);
 	echoLayout->addWidget(progressBar, 4, 0);
 	echoGroup->setLayout(echoLayout);
 
@@ -74,15 +74,11 @@ Window::Window(QWidget *parent) :
 
 	//http = new HTTP();
 
-	std::string pageUrl = "http://stanlewry.com";
+	std::string pageUrl = "";
 
 	connect(confirmTextButton, SIGNAL(clicked()), this, SLOT(setPageURL()));
+	connect(downloadNowButton, SIGNAL(clicked()), this, SLOT(setFolderPath()));
 
-	//connect(lineEdit, SIGNAL(text()), m_button3, SLOT(setText(const QString)));
-
-	//connect(m_button, SIGNAL(clicked()), this, SLOT(getPage()));
-	//connect(m_button2, SIGNAL(clicked()), this, SLOT(getImage()));
-	//connect(m_button3, SIGNAL(clicked()), this, SLOT(scrapeImages(std::string)));
 }
 
 
@@ -170,6 +166,17 @@ void Window::scrapeImages(std::string pageURL){
 	fileOut.close();
 }
 
+
+std::string Window::getFileName(std::string imageURL){
+	for(int i = imageURL.size(); i > 0; i--){
+		if(imageURL[i] == '/'){
+			return imageURL.substr(i + 1, imageURL.size() - i);
+		}
+	}
+
+	return imageURL;
+}
+
 void Window::getPage(){
 
 	std::string pageData = request->getPage("http://stanlewry.com");
@@ -177,13 +184,33 @@ void Window::getPage(){
 
 }
 
-void Window::getImage(){
-	std::string imageData = request->getPage("http://stanlewry.com/assets/me.png");
-	std::cout << imageData << std::endl;
-	std::ofstream fileOut("output.png");
+std::string Window::getImage(std::string imageURL){
+	std::string imageData = request->getPage(imageURL);
+	std::cout << "Requesting an image at: " << std::cout << imageURL << std::endl;
+	if(imageData.compare(std::string("ERR")) == 0){
+		std::string newPath = pageURLStr + std::string("/") + imageURL;
+		std::cout << "image not found..." << std::endl;
+		std::cout << "trying again at: " << newPath << std::endl;
+		imageData = request->getPage(newPath);
+	}
+
+	return imageData;
+}
+
+void Window::writeToFile(std::string path, std::string imageURL, std::string imageData){
+        path =  getFileName(imageURL);
+	std::cout << "WRITING THE IMAGE TO: " << std::endl;
+	std::cout << path << std::endl;
+	std::ofstream fileOut(path.c_str());
 	fileOut << imageData;
 	fileOut.close();
+}
 
+void Window::saveAllImages(){
+	for(int i = 0; i < linkStore.size(); i++){
+		writeToFile(folderPathStr, linkStore.at(i),
+				getImage(linkStore.at(i)));
+	}
 }
 
 void Window::setPageURL(){
@@ -192,7 +219,13 @@ void Window::setPageURL(){
 	listWidget->clear();
 	linkStore.clear();	
 	pageURL = lineEdit->text();
-
+	pageURLStr = pageURL.toStdString();
 	std::cout << pageURL.toStdString();
 	scrapeImages(pageURL.toStdString());
+}
+
+void Window::setFolderPath(){
+	filePath = folderPath->text();
+	folderPathStr = filePath.toStdString();
+	saveAllImages();	
 }

@@ -25,12 +25,21 @@ class Window : public QWidget{
 	Q_OBJECT
 	public:
 		explicit Window(QWidget *parent = 0);
+		void writeToFile(std::string path, 
+				std::string imageURL,
+				std::string imageData);
+		std::string getImage(std::string imageURL);
+
+		void saveAllImages();
+		
+		std::string getFileName(std::string imageURL);
 
 	private slots:
 		void getPage();
-		void getImage();
+		//void getImage();
 		void scrapeImages(std::string pageURL);
 		void setPageURL();
+		void setFolderPath();
 
 	private:
 		QPushButton *confirmTextButton;
@@ -45,12 +54,15 @@ class Window : public QWidget{
 		QGraphicsPixmapItem item;
 
 		QString pageURL;
+		QString filePath;
 
 		QLineEdit *lineEdit;
 		QLineEdit *folderPath;
 		//HTTP *http;
 		Request *request;
 		std::vector<std::string> linkStore;
+		std::string folderPathStr;
+		std::string pageURLStr;
 };
 
 #endif

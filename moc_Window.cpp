@@ -31,16 +31,17 @@ static const uint qt_meta_data_Window[] = {
 
  // slots: signature, parameters, type, tag, flags
        8,    7,    7,    7, 0x08,
-      18,    7,    7,    7, 0x08,
-      37,   29,    7,    7, 0x08,
-      63,    7,    7,    7, 0x08,
+      26,   18,    7,    7, 0x08,
+      52,    7,    7,    7, 0x08,
+      65,    7,    7,    7, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_Window[] = {
-    "Window\0\0getPage()\0getImage()\0pageURL\0"
+    "Window\0\0getPage()\0pageURL\0"
     "scrapeImages(std::string)\0setPageURL()\0"
+    "setFolderPath()\0"
 };
 
 void Window::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -50,9 +51,9 @@ void Window::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         Window *_t = static_cast<Window *>(_o);
         switch (_id) {
         case 0: _t->getPage(); break;
-        case 1: _t->getImage(); break;
-        case 2: _t->scrapeImages((*reinterpret_cast< std::string(*)>(_a[1]))); break;
-        case 3: _t->setPageURL(); break;
+        case 1: _t->scrapeImages((*reinterpret_cast< std::string(*)>(_a[1]))); break;
+        case 2: _t->setPageURL(); break;
+        case 3: _t->setFolderPath(); break;
         default: ;
         }
     }

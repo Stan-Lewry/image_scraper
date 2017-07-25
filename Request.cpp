@@ -28,6 +28,7 @@ std::string Request::getPage(std::string pageUrl){
 	}
 	catch(curlpp::RuntimeError & e){
 		std::cout << e.what() << std::endl;
+		std::cout << "A RUNTIME ERROR HAS BEEN CAUGHT"<< std::endl;
 		return "ERR";
 	}
 	catch(curlpp::LogicError & e){
