@@ -35,6 +35,10 @@ class Window : public QWidget{
 		
 		std::string getFileName(std::string imageURL);
 
+	public signals:
+		std::string sendRequest();
+
+
 	private slots:
 		void getPage();
 		//void getImage();

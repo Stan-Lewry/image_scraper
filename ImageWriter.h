@@ -3,22 +3,22 @@
 
 #include <string>
 #include <vector>
+#include <fstream>
 #include <iostream> // remove later
 
 class ImageWriter{
 public:
-	FileManager();
-	~FileManager();
+	ImageWriter();
+	~ImageWriter();
 
-	void writeImageDataToFile(std::string filePath,
-			std::string imageName,
+	void writeImageDataToFile(std::string imageName,
 			std::string imageData);
-	std::string getImageData(std::string imageURL);
-	void writeAllImages(std::vector<String> images, std::string filePath);
+	
+	void setFolderPath(std::string folderPath);
 
 
 private:
-
+	std::string filePath;
 };
 
 
