@@ -22,28 +22,22 @@ static const uint qt_meta_data_Window[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       2,       // signalCount
-
- // signals: signature, parameters, type, tag, flags
-      20,    7,    8,    7, 0x05,
-      38,    7,    8,    7, 0x05,
+       0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-      56,    7,    7,    7, 0x08,
-      69,    7,    7,    7, 0x08,
+       8,    7,    7,    7, 0x08,
+      21,    7,    7,    7, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_Window[] = {
-    "Window\0\0std::string\0sendPageRequest()\0"
-    "sendDownloadAll()\0setPageURL()\0"
-    "setFolderPath()\0"
+    "Window\0\0setPageURL()\0setFolderPath()\0"
 };
 
 void Window::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -52,15 +46,12 @@ void Window::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         Q_ASSERT(staticMetaObject.cast(_o));
         Window *_t = static_cast<Window *>(_o);
         switch (_id) {
-        case 0: { std::string _r = _t->sendPageRequest();
-            if (_a[0]) *reinterpret_cast< std::string*>(_a[0]) = _r; }  break;
-        case 1: { std::string _r = _t->sendDownloadAll();
-            if (_a[0]) *reinterpret_cast< std::string*>(_a[0]) = _r; }  break;
-        case 2: _t->setPageURL(); break;
-        case 3: _t->setFolderPath(); break;
+        case 0: _t->setPageURL(); break;
+        case 1: _t->setFolderPath(); break;
         default: ;
         }
     }
+    Q_UNUSED(_a);
 }
 
 const QMetaObjectExtraData Window::staticMetaObjectExtraData = {
@@ -95,28 +86,10 @@ int Window::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 2;
     }
     return _id;
-}
-
-// SIGNAL 0
-std::string Window::sendPageRequest()
-{
-    std::string _t0;
-    void *_a[] = { const_cast<void*>(reinterpret_cast<const void*>(&_t0)) };
-    QMetaObject::activate(this, &staticMetaObject, 0, _a);
-    return _t0;
-}
-
-// SIGNAL 1
-std::string Window::sendDownloadAll()
-{
-    std::string _t0;
-    void *_a[] = { const_cast<void*>(reinterpret_cast<const void*>(&_t0)) };
-    QMetaObject::activate(this, &staticMetaObject, 1, _a);
-    return _t0;
 }
 QT_END_MOC_NAMESPACE

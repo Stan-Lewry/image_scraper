@@ -4,6 +4,8 @@ Window::Window(QWidget *parent) :
 	QWidget(parent)
 {
 
+	
+	imageScraper = new ImageScraper();
 
 	confirmTextButton = new QPushButton("Go!", this);
 	downloadNowButton = new QPushButton("Download All", this);
@@ -33,8 +35,8 @@ Window::Window(QWidget *parent) :
 	echoLayout->addWidget(lineEdit, 1, 0, 1, 2);
 	echoLayout->addWidget(confirmTextButton, 1, 2);
 	echoLayout->addWidget(listWidget, 2, 0, 1, 3);
-	//echoLayout->addWidget(folderPath, 3, 0, 1, 2);
-	echoLayout->addWidget(downloadNowButton, 3, 0);
+	echoLayout->addWidget(folderPath, 3, 0, 1, 2);
+	echoLayout->addWidget(downloadNowButton, 3, 2);
 	echoLayout->addWidget(progressBar, 4, 0);
 	echoGroup->setLayout(echoLayout);
 
@@ -48,13 +50,24 @@ Window::Window(QWidget *parent) :
 
 }
 
-std::string Window::sendPageRequest(){
-	return lineEdit->text().toStdString();
+
+
+void Window::sendPageRequest(){
+	listWidget->clear();
+	imageScraper->scrapeImages(lineEdit->text().toStdString());
+	for(int i = 0; i < imageScraper->imageURLStore.size(); i++){
+		QListWidgetItem *newItem = new QListWidgetItem;
+		QString qstr = QString::fromStdString(imageScraper->imageURLStore.at(i));
+		newItem->setText(qstr);
+		listWidget->insertItem(listWidget->count(), newItem);
+	}
 }
 
-std::string Window::sendDownloadAll(){
-	return folderPath->text().toStdString();
+void Window::sendDownloadAll(){
+	imageScraper->downloadAll(folderPath->text().toStdString());
 }
+
+
 
 void Window::setPageURL(){
 	sendPageRequest();

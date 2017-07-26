@@ -18,7 +18,7 @@ public:
 
 
 private:
-	std::string filePath;
+	std::string folderPath;
 };
 
 

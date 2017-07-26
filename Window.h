@@ -16,7 +16,7 @@
 #include <QFileDialog>
 #include <qlabel.h>
 #include <qgridlayout.h>
-#include "Request.h"
+#include "ImageScraper.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -30,9 +30,8 @@ class Window : public QWidget{
 				std::string imageURL,
 				std::string imageData);
 
-	signals:
-		std::string sendPageRequest();
-		std::string sendDownloadAll();
+		void sendPageRequest();
+		void sendDownloadAll();
 
 	private slots:
 		void setPageURL();
@@ -55,11 +54,9 @@ class Window : public QWidget{
 
 		QLineEdit *lineEdit;
 		QLineEdit *folderPath;
-		//HTTP *http;
-		Request *request;
-		std::vector<std::string> linkStore;
-		std::string folderPathStr;
-		std::string pageURLStr;
+		
+
+		ImageScraper* imageScraper;
 };
 
 #endif

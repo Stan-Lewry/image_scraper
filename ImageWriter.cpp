@@ -9,8 +9,10 @@ void ImageWriter::setFolderPath(std::string _folderPath){
 
 void ImageWriter::writeImageDataToFile(std::string imageName,
 		std::string imageData){
+	
+	std::string filePath = folderPath + std::string("/") + imageName;
 
-	ofstream outputFile(folderPath + std::string("/") + imageName);
+	std::ofstream outputFile(filePath.c_str());
 
 	outputFile << imageData;
 

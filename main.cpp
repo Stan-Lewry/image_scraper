@@ -1,7 +1,7 @@
 #include <qapplication.h>
 #include <qpushbutton.h>
-//#include "Window.h"
-#include "ImageScraper.h"
+#include "Window.h"
+//#include "ImageScraper.h"
 #include <iostream>
 #include <string>
 //#include <curl/curl.h>
@@ -17,7 +17,9 @@ using namespace curlpp::options;
 int main(int argc, char **argv){
 	QApplication app (argc, argv);
 
-	ImageScraper *imageScraper = new ImageScraper();
+	Window window;
+
+	window.show();
 
 	return app.exec();
 }

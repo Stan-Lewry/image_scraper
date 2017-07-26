@@ -8,5 +8,5 @@ DEPENDPATH += .
 INCLUDEPATH += .
 
 # Input
-HEADERS += Request.h Window.h
-SOURCES += main.cpp Request.cpp Window.cpp
+HEADERS += Request.h Window.h ImageScraper.h ImageWriter.h
+SOURCES += main.cpp Request.cpp Window.cpp ImageScraper.cpp ImageWriter.cpp
