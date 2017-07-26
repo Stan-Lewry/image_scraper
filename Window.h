@@ -20,7 +20,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-
+#include <string>
 
 class Window : public QWidget{
 	Q_OBJECT
@@ -29,20 +29,12 @@ class Window : public QWidget{
 		void writeToFile(std::string path, 
 				std::string imageURL,
 				std::string imageData);
-		std::string getImage(std::string imageURL);
 
-		void saveAllImages();
-		
-		std::string getFileName(std::string imageURL);
-
-	public signals:
-		std::string sendRequest();
-
+	signals:
+		std::string sendPageRequest();
+		std::string sendDownloadAll();
 
 	private slots:
-		void getPage();
-		//void getImage();
-		void scrapeImages(std::string pageURL);
 		void setPageURL();
 		void setFolderPath();
 

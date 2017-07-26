@@ -3,4 +3,9 @@ TO-DO:
 
 Search into CSS to find more images
 
-Progress bar at the bottom
+Image Scraper class needs to interface with window class,
+	Slots to find all images and a slot for download now
+
+Window class needs cleaning up
+
+Stop curlpp 
